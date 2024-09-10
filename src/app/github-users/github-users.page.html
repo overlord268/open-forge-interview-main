@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Github Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content>
+    <ion-list>
+      @for (user of users(); track user.id) {
+        <ion-item (click)="navigateToUserSearchTab(user.login)">
+          <ion-avatar slot="start">
+            <img [src]="user.avatar_url" alt="avatar" />
+          </ion-avatar>
+          <ion-label>{{ user.login }}</ion-label>
+        </ion-item>
+      }
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-content>
